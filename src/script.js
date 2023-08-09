@@ -1,5 +1,13 @@
 'use strict';
 
+// BEGINNER
+// Factorial
+const factorial = (num) => {
+  return [...Array(num + 1).keys()]
+    .slice(1) // exclude 0
+    .reduce((acc, num) => (acc *= num), 1);
+};
+
 // BEGINNER TO INTERMEDIATE
 // Character Frequency
 const characterFrequency = (str) => {
@@ -66,4 +74,26 @@ const isPerfectNumber = (num) => {
     .reduce((acc, div) => (acc += div), 0); // give us the sum of the divisors
 
   return sum === num;
+};
+
+// Square Root
+const squareRoot = (num) => {
+  if (num < 0) throw new Error(`num must be positive.`);
+  return num ** (1 / 2);
+};
+
+// String Permutations
+const strPermutations = (str) => {
+  if (str.length === 0) return [''];
+
+  const [char, ...rest] = [...str];
+
+  const prevPerms = strPermutations(rest);
+  const perms = [];
+
+  for (const prevPerm of prevPerms)
+    for (let i = 0; i <= prevPerm.length; i++)
+      perms.push(`${prevPerm.slice(0, i)}${char}${prevPerm.slice(i)}`);
+
+  return perms;
 };

@@ -44,4 +44,59 @@ const tempConversion = (unit, temp) => {
 const secondLargestNumber = (arr) => arr.sort((a, b) => b - a)[1];
 ```
 
+4. Array Rotation
+
+```js
+const rotateToRight = (arr, n) => {
+  const l = arr.length;
+  return arr.slice(-n).concat(arr.slice(0, l - n));
+};
+
+const rotateToLeft = (arr, n) => {
+  const l = arr.length;
+  return arr.slice(n).concat(arr.slice(0, n));
+};
+```
+
+5. Perfect Number
+
+```js
+const isPerfectNumber = (num) => {
+  const sum = [...Array(num).keys()] // num itself is excluded in the list
+    .slice(1, num) // to exclude number 0
+    .filter((div) => num % div === 0) // give us all the divisors
+    .reduce((acc, div) => (acc += div), 0); // give us the sum of the divisors
+
+  return sum === num;
+};
+```
+
+6. Square Root
+
+```js
+const squareRoot = (num) => {
+  if (num < 0) throw new Error(`num must be positive.`);
+  return num ** (1 / 2);
+};
+```
+
+7. String Permutations
+
+```js
+const strPermutations = (str) => {
+  if (str.length === 0) return [''];
+
+  const [char, ...rest] = [...str];
+
+  const prevPerms = strPermutations(rest);
+  const perms = [];
+
+  for (const prevPerm of prevPerms)
+    for (let i = 0; i <= prevPerm.length; i++)
+      perms.push(`${prevPerm.slice(0, i)}${char}${prevPerm.slice(i)}`);
+
+  return perms;
+};
+```
+
 Thanks to whatsdev 🙏
