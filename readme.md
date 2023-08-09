@@ -1,5 +1,17 @@
 # Algorithmic Challenges
 
+## BEGINNER
+
+1. Factorial
+
+```js
+const factorial = (num) => {
+  return [...Array(num + 1).keys()]
+    .slice(1) // exclude 0
+    .reduce((acc, num) => (acc *= num), 1);
+};
+```
+
 ## BEGINNER TO INTERMEDIATE
 
 1. Character Frequency
