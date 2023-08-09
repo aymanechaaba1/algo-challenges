@@ -97,3 +97,15 @@ const strPermutations = (str) => {
 
   return perms;
 };
+
+// Armstrong Number
+const isArmstrong = (num) => {
+  const sum = num
+    .toString()
+    .split('')
+    .map((char) => Number(char) ** num.toString().length)
+    .reduce((acc, num) => (acc += num), 0);
+
+  if (sum === num) return true;
+  if (sum !== num) return false;
+};
